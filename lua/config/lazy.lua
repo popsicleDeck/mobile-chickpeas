@@ -15,34 +15,37 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- Setup leaser before loading lazy
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
---[[  spec = {
-    -- import your plugins
-    { import = "plugins" },
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
---]]
-  {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  config = function()
+	{
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	config = function()
 	  vim.cmd([[colorscheme tokyonight-night]])
-	  vim.cmd.highlight({ "Comment", "guifg=#6c77ab" })
-
-	  
-
-  end,
-  },
+	  vim.cmd.highlight({ "Comment", "guifg=#6c76ad" })
+	end,
+	},
+	{
+	    "neovim/nvim-lspconfig",
+	    dependencies = {
+		'williamboman/mason.nvim',
+		'williamboman/mason-lspconfig.nvim',
+	    },
+	    config = function()
+		require("mason").setup {
+		    log_level = vim.log.levels.DEBUG
+		}
+		require("mason-lspconfig").setup_handlers {
+		    -- The first entry (without a key) will be the default handler
+		    function(server_name) -- default handler (optional)
+			require("lspconfig")[server_name].setup {}
+		    end,
+		}
+	    end,
+	}
 })
