@@ -30,6 +30,7 @@ require("lazy").setup({
 	  vim.cmd.highlight({ "Comment", "guifg=#6c76ad" })
 	end,
 	},
+    -- LSP config
 	{
 	    "neovim/nvim-lspconfig",
 	    dependencies = {
@@ -40,12 +41,26 @@ require("lazy").setup({
 		require("mason").setup {
 		    log_level = vim.log.levels.DEBUG
 		}
+		require("mason-lspconfig").setup()
 		require("mason-lspconfig").setup_handlers {
-		    -- The first entry (without a key) will be the default handler
-		    function(server_name) -- default handler (optional)
+		    function(server_name) -- default non-specific handler
 			require("lspconfig")[server_name].setup {}
-		    end,
-		}
-	    end,
+			end,
+		       ["lua_ls"] = function ()
+		       require("lspconfig").lua_ls.setup {
+			   settings = {
+			       Lua = {
+			       --avoid lua's diagnostic "underfined global"}
+				   diagnostics = {
+				       globals = { "vim" }
+				   }
+			       }
+			   }
+		       }
+		   end,
+		 }
+	      end,
 	}
+
+    -- Formatter: using conform.nvim
 })
