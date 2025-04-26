@@ -36,6 +36,7 @@ require("lazy").setup({
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			"saghen/blink.cmp",
 		},
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
@@ -93,6 +94,7 @@ require("lazy").setup({
 	{
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
 		opts = {
 			keymap = {
 				preset = "default",
@@ -141,4 +143,12 @@ require("lazy").setup({
 		},
 		opts_extend = { "sources.default" },
 	},
+
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+	{ "tpope/vim-fugitive" },
 })
