@@ -150,5 +150,12 @@ require("lazy").setup({
 			require("gitsigns").setup()
 		end,
 	},
-	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-fugitive" }, -- s = stage or 'git add'; cc = commit; P = push
+
+	{
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end,
+	},
 })
