@@ -1,6 +1,8 @@
 require("config.lazy")
 require("plugins.nvim-treesitter")
 
+vim.g.have_nerd_font = true
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
@@ -13,3 +15,4 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 
 vim.keymap.set("n", "<Leader><Leader>", "<Cmd>so<Space>%<Tab><CR>", { desc = "Source current file" })
+vim.keymap.set("n", "<leader>o", "<Cmd>Oil<CR>", { desc = "Run Oil" })

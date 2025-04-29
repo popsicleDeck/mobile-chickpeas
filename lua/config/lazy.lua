@@ -43,7 +43,7 @@ require("lazy").setup({
 			require("mason").setup({ log_level = vim.log.levels.DEBUG })
 			require("mason-lspconfig").setup()
 			require("mason-lspconfig").setup_handlers({
-				function(server_name) -- default non-specific handler
+				function(server_name)
 					require("lspconfig")[server_name].setup({})
 				end,
 				["lua_ls"] = function()
@@ -151,11 +151,25 @@ require("lazy").setup({
 		end,
 	},
 	{ "tpope/vim-fugitive" }, -- s = stage or 'git add'; cc = commit; P = push
+	{ "echasnovski/mini.icons", version = false },
 
 	{
 		"stevearc/oil.nvim",
+		opts = {},
 		config = function()
-			require("oil").setup()
+			require("oil").setup({
+				default_file_explorer = true,
+				columns = {
+					"icon",
+				},
+			})
 		end,
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	},
+
+	{
+		"ibhagwan/fzf-lua",
+		dependencies = { "echasnovski/mini.icons" },
+		opts = {},
 	},
 })
