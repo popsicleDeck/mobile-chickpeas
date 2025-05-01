@@ -175,4 +175,9 @@ require("lazy").setup({
 		dependencies = { "echasnovski/mini.icons" },
 		opts = {},
 	},
+
+	{
+		"brianhuster/live-preview.nvim",
+		dependencies = { "ibhagwan/fzf-lua" },
+	},
 })
