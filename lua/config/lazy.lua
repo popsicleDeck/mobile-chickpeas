@@ -59,6 +59,9 @@ require("lazy").setup({
 						capabilities = capabilities,
 					})
 				end,
+				["emmet_language_server"] = function()
+					require("lspconfig").emmet_language_server.setup({ capabilities = capabilities })
+				end,
 				["basedpyright"] = function()
 					require("lspconfig").basedpyright.setup({
 						capabilities = capabilities,
