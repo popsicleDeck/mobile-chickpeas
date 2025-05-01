@@ -15,4 +15,6 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 8
 
 vim.keymap.set("n", "<Leader><Leader>", "<Cmd>so<Space>%<Tab><CR>", { desc = "Source current file" })
-vim.keymap.set("n", "<leader>o", "<Cmd>Oil<CR>", { desc = "Run Oil" })
+vim.keymap.set("n", "<Leader>o", "<Cmd>Oil<CR>", { desc = "Run Oil" })
+vim.keymap.set("n", "<Leader>q", "<Cmd>nohls<CR>", { desc = "cancel highlights" })
+vim.keymap.set("n", "<Leader>n", "$a<CR>", { desc = "enter insert mode in the line bellow the current cursor" })
