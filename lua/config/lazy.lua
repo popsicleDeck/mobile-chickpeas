@@ -80,12 +80,13 @@ require("lazy").setup({
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					javascript = "prettierd",
-					html = "prettierd",
-					css = "prettierd",
+					javascript = { "prettierd" },
+					html = { "prettierd" },
+					css = { "prettierd" },
+					python = { "ruff" },
 				},
 				format_on_save = {
-					timeout_ms = 500,
+					timeout_ms = 1000,
 					lsp_format = "fallback",
 				},
 				--[[  formatters = {
