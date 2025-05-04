@@ -43,6 +43,9 @@ require("lazy").setup({
 			require("mason").setup({ log_level = vim.log.levels.DEBUG })
 			require("mason-lspconfig").setup()
 			require("mason-lspconfig").setup_handlers({
+				function(server_name) -- default handler (optional)
+					require("lspconfig")[server_name].setup({})
+				end,
 				function(server_name)
 					require("lspconfig")[server_name].setup({})
 				end,
@@ -179,5 +182,30 @@ require("lazy").setup({
 	{
 		"brianhuster/live-preview.nvim",
 		dependencies = { "ibhagwan/fzf-lua" },
+	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"c",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"markdown",
+					"markdown_inline",
+					"html",
+					"python",
+					"css",
+					"javascript",
+				},
+				sync_install = false,
+				auto_install = true,
+				highlight = { enable = true },
+				indent = { enable = true },
+			})
+		end,
 	},
 })
