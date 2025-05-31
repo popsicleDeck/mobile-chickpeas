@@ -19,3 +19,4 @@ vim.keymap.set("n", "<Leader><Leader>", "<Cmd>so<Space>%<Tab><CR>", { desc = "So
 vim.keymap.set("n", "<Leader>o", "<Cmd>Oil<CR>", { desc = "Run Oil" })
 vim.keymap.set("n", "<Leader>q", "<Cmd>nohls<CR>", { desc = "cancel highlights" })
 vim.keymap.set("n", "<Leader>n", "$a<CR>", { desc = "enter insert mode at the line bellow the current cursor" })
+vim.keymap.set("n", "<Leader>f", "<Cmd>FzfLua<CR>", { desc = "Run Fzf" })
