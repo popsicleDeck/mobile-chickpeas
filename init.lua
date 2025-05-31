@@ -1,5 +1,7 @@
 require("config.lazy")
-
+require("lazy").setup({
+	{ "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
+})
 vim.g.have_nerd_font = true
 
 vim.opt.number = true

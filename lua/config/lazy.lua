@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup leaser before loading lazy
+-- Setup leader before loading lazy
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -32,44 +32,19 @@ require("lazy").setup({
 	},
 	-- LSP config
 	{
-		"neovim/nvim-lspconfig",
+		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
 			"saghen/blink.cmp",
 		},
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			require("mason").setup({ log_level = vim.log.levels.DEBUG })
-			require("mason-lspconfig").setup()
-			require("mason-lspconfig").setup_handlers({
-				function(server_name) -- default handler (optional)
-					require("lspconfig")[server_name].setup({})
-				end,
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-				["lua_ls"] = function()
-					require("lspconfig").lua_ls.setup({
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-							},
-						},
-
-						capabilities = capabilities,
-					})
-				end,
-				["emmet_language_server"] = function()
-					require("lspconfig").emmet_language_server.setup({ capabilities = capabilities })
-				end,
-				["basedpyright"] = function()
-					require("lspconfig").basedpyright.setup({
-						capabilities = capabilities,
-					})
-				end,
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "emmet_language_server", "basedpyright" },
+			})
+			vim.lsp.config("*", {
+				capabilities = capabilities,
 			})
 		end,
 	},
@@ -157,7 +132,6 @@ require("lazy").setup({
 			require("gitsigns").setup()
 		end,
 	},
-	{ "tpope/vim-fugitive" }, -- s = stage or 'git add'; cc = commit; P = push
 	{ "echasnovski/mini.icons", version = false },
 
 	{
@@ -209,4 +183,5 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{ "tpope/vim-fugitive" },
 })
