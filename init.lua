@@ -2,6 +2,7 @@ require("config.lazy")
 require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
 })
+require("config.autocmd")
 vim.g.have_nerd_font = true
 
 vim.opt.number = true
@@ -20,3 +21,5 @@ vim.keymap.set("n", "<Leader>o", "<Cmd>Oil<CR>", { desc = "Run Oil" })
 vim.keymap.set("n", "<Leader>q", "<Cmd>nohls<CR>", { desc = "cancel highlights" })
 vim.keymap.set("n", "<Leader>n", "$a<CR>", { desc = "enter insert mode at the line bellow the current cursor" })
 vim.keymap.set("n", "<Leader>f", "<Cmd>FzfLua<CR>", { desc = "Run Fzf" })
+
+vim.api.nvim_set_hl(0, "YankHighlight", { bg = "#30cfc9", fg = "#3c445c" })
