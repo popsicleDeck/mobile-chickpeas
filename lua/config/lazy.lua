@@ -31,7 +31,7 @@ require("lazy").setup({
 		end,
 	},
 	-- LSP config
-		{
+	{
 		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
@@ -46,34 +46,31 @@ require("lazy").setup({
 			vim.lsp.config("*", {
 				capabilities = capabilities,
 			})
-		end
+		end,
 	},
-
-
-		(		-- Formatter config
-{
-			"stevearc/conform.nvim",
-			config = function()
-				require("conform").setup({
-					formatters_by_ft = {
-						lua = { "stylua" },
-						javascript = { "prettierd" },
-						html = { "prettierd" },
-						css = { "prettierd" },
-						python = { "ruff" },
-					},
-					format_on_save = {
-						timeout_ms = 1000,
-						lsp_format = "fallback",
-					},
-					--[[  formatters = {
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					javascript = { "prettierd" },
+					html = { "prettierd" },
+					css = { "prettierd" },
+					python = { "ruff" },
+				},
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_format = "fallback",
+				},
+				--[[  formatters = {
           stylua = {
             prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
           },
         },]]
-				})
-			end,
-		}),
+			})
+		end,
+	},
 	-- Autocomplete
 	{
 		"saghen/blink.cmp",

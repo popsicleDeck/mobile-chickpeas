@@ -3,6 +3,9 @@ require("lazy").setup({
 	{ "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
 })
 require("config.autocmd")
+
+vim.g.python3_host_prog = "/usr/bin/python3"
+
 vim.g.have_nerd_font = true
 
 vim.opt.number = true
