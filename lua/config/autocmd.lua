@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 			end
 		end
 
-		vim.fn.jobstart({ "py3", fname }, {
+		vim.fn.jobstart({ "python3", fname }, {
 			stdout_buffered = true,
 			on_stdout = append_data,
 			on_stderr = append_data,
