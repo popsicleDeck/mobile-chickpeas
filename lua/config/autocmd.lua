@@ -22,7 +22,7 @@ end
 vim.api.nvim_create_user_command("Run", function()
 	local bufnr = (tonumber(vim.fn.input("Bufnr: ")))
 	local pattern = vim.fn.input("Pattern: ")
-	local command = vim.split(vim.fn.input("Command and file name: "), " ")
+	local command = vim.split(tostring(vim.fn.input("Command to run: ") .. " " .. (vim.api.nvim_buf_get_name(0))), " ")
 	attach_to_buffer(bufnr, pattern, command)
 end, {})
 
