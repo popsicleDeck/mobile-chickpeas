@@ -19,6 +19,7 @@ local attach_to_buffer = function(bufnr, pattern, command)
 		end,
 	})
 end
+
 vim.api.nvim_create_user_command("Run", function()
 	local bufnr = (tonumber(vim.fn.input("Bufnr: ")))
 	local pattern = vim.fn.input("Pattern: ")
