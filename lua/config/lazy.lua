@@ -63,11 +63,10 @@ require("lazy").setup({
 					timeout_ms = 500,
 					lsp_format = "fallback",
 				},
-				--[[  formatters = {
-          stylua = {
+				--[[ formatters = {
+				stylua = {
             prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
-          },
-        },]]
+          }]]
 			})
 		end,
 	},
@@ -183,4 +182,11 @@ require("lazy").setup({
 		end,
 	},
 	{ "tpope/vim-fugitive" },
+	{ "preservim/vim-pencil" },
+	{
+		"brianhuster/live-preview.nvim",
+		dependencies = {
+			"ibhagwan/fzf-lua",
+		},
+	},
 })

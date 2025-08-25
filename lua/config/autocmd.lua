@@ -33,3 +33,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank({ higroup = "YankHighlight", timeout = 200 })
 	end,
 })
+
+-- vim.api.nvim_create_user_command("Filetype",
+--
+-- )
