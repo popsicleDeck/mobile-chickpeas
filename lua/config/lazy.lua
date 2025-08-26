@@ -182,7 +182,14 @@ require("lazy").setup({
 		end,
 	},
 	{ "tpope/vim-fugitive" },
+	-- Writing
 	{ "preservim/vim-pencil" },
+	{
+		"folke/zen-mode.nvim",
+		opts = {},
+	},
+	{ "junegunn/goyo.vim" },
+
 	{
 		"brianhuster/live-preview.nvim",
 		dependencies = {
