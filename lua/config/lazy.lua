@@ -60,7 +60,7 @@ require("lazy").setup({
 					python = { "ruff" },
 				},
 				format_on_save = {
-					timeout_ms = 500,
+					timeout_ms = 1500,
 					lsp_format = "fallback",
 				},
 				--[[ formatters = {
@@ -78,6 +78,8 @@ require("lazy").setup({
 		opts = {
 			keymap = {
 				preset = "default",
+				["<C-y"] = false,
+				["<M-f>"] = { "select_and_accept" },
 				["<A-1>"] = {
 					function(cmp)
 						cmp.accept({ index = 1 })
@@ -195,5 +197,10 @@ require("lazy").setup({
 		dependencies = {
 			"ibhagwan/fzf-lua",
 		},
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
 	},
 })
