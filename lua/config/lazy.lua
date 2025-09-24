@@ -60,7 +60,7 @@ require("lazy").setup({
 					python = { "ruff" },
 				},
 				format_on_save = {
-					timeout_ms = 1500,
+					timeout_ms = 2000,
 					lsp_format = "fallback",
 				},
 				--[[ formatters = {
